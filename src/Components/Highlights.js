@@ -1,6 +1,8 @@
 const Highlights = () => {
     return (
-        <div></div>
+        <div>
+            Highlights Section
+        </div>
     )
 }
 

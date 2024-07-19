@@ -1,11 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import TableReservations from "./TableReservations";
+import HomePage from "./HomePage";
+import OrderOnline from "./OrderOnline";
+
 const Main = () => {
     return (
-        <div>
-            <h1>Title</h1>
-            <p>
-                This is some normal text.
-            </p>
-        </div>
+        <main>
+            <Routes>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="/reservations" element={<TableReservations />}/>
+                <Route path="/orderonline" element={<OrderOnline />}/>
+            </Routes>
+        </main>
     )
 }
 
