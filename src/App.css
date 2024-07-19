@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* General Style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Markazi Text';
+  font-weight: 500;
+}
+
+p {
+  font-family: 'Karla';
+}
+
+body {
+  font-family: 'Karla';
+}
+
+/* span {
+
+} */
+
+
+/* Nav */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav > ul {
+  display: flex;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+
+/* Footer */
+footer {
+  display: flex;
+  background-color: lightgray;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer > ul {
+  display: flex;
+}
+
+footer > ul > li {
+  list-style-type: none;
+  margin: 10px;
+}
+
+footer li {
+    list-style-type: none;
+}
