@@ -1,6 +1,7 @@
-import Logo from '../Assets/Logo.svg'
-import '../App.css'
+import Logo from '../assets/Logo.svg'
 import { Link } from 'react-router-dom';
+import '../styles/nav.css'
+
 
 const Nav = () => {
     return (

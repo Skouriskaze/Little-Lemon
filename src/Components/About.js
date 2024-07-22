@@ -1,6 +1,6 @@
 const About = () => {
     return (
-        <div id="about">
+        <div className="about primary-section-even">
             <h1>About</h1>
             <p>
                 Lorem Ipsum

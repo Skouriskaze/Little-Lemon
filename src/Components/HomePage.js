@@ -6,9 +6,6 @@ import Testimonials from "./Testimonials";
 const HomePage = () => {
     return (
         <>
-            <h1>
-                Little Lemon Home
-            </h1>
             <Hero />
             <Highlights />
             <Testimonials />

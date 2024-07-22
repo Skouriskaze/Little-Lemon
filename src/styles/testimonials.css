@@ -1,0 +1,20 @@
+.rating {
+    background: gray;
+    text-align: center;
+    border-radius: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.rating > div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+span.checked {
+    color: #F4CE14;
+}
+
+.star-count {
+    margin-left: 20px;
+}
