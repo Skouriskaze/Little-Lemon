@@ -1,0 +1,15 @@
+.about {
+    color: #333333;
+    background-image: url('../assets/Chefs.jpg');
+    background-size: cover;
+    min-height: 400px;
+}
+
+.about-container {
+    display: inline-block;
+    max-width: 40%;
+    background-color: #EE9972;
+    border-radius: 16px;;
+    opacity: 90%;
+    padding: 16px;
+}

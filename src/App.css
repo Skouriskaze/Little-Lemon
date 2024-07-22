@@ -65,21 +65,31 @@ footer li {
     display: flex;
     flex-direction: column;
 }
-.vertical-splitter *:last-child {
+.vertical-splitter > *:last-child {
   margin-top: auto;
 }
 
 .horizontal-splitter {
     display: flex;
+    align-content: center;
+    justify-content: center;
 }
-.horizontal-splitter *:last-child {
-  margin-left: auto;
+.horizontal-splitter > *:last-child {
+    margin-left: auto;
 }
 
 .primary-section-odd {
-    background-color: #495E57;
+    background: #495E57;
+}
+
+.primary-section-odd h1 {
+    color: #F4CE14;
 }
 
 .primary-section-even {
     background: #F4CE14;
+}
+
+.primary-section-even h1 {
+    color: #333333;
 }

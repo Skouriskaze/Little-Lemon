@@ -6,7 +6,7 @@ const Hero = () => {
         <div className="hero primary-section-odd">
             <div className="hero-container">
                 <div className="hero-description">
-                    <h1 id='hero-title'>Little Lemon</h1>
+                    <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper orci eu dapibus pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim vel odio vitae molestie. Fusce et tempor magna, vel scelerisque nisl. Integer et lacus rhoncus, fringilla lectus id, dictum odio.</p>
                     <button id='reserve-table-button'>

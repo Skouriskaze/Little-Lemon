@@ -1,9 +1,14 @@
+/* .testimonial h1 {
+    color: #F4CE14;
+} */
+
 .rating {
-    background: gray;
+    background: #333333;
     text-align: center;
     border-radius: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: #EDEFEE;
 }
 
 .rating > div {

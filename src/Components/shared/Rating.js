@@ -1,12 +1,11 @@
 const Rating = ( {starCount} ) => {
     const maxStars = 5;
     const filledStars = Array(starCount).fill(0).map(
-        () => <span class="fa fa-star checked"></span>
+        (value, idx) => <span className="fa fa-star checked" key={idx}></span>
     );
     const emptyStars = Array(maxStars - starCount).fill(0).map(
-        () => <span class="fa fa-star"></span>
+        (value, idx) => <span className="fa fa-star" key={idx}></span>
     );
-    console.log(filledStars);
 
     return (
         <div className="rating">

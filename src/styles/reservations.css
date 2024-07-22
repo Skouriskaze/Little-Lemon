@@ -1,0 +1,10 @@
+.form-container {
+    background-color: #495E57;
+    min-height: 70vh;
+}
+
+.table-form {
+    display: grid;
+    max-width: 200px;
+    gap: 20px;
+}

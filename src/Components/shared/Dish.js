@@ -9,7 +9,7 @@ const Dish = ({image, dishName}) => {
                 <span className='card-highlight'>$12.99</span>
             </div>
             <p className="card-text">Get your {dishName} today!</p>
-            <p className="card-highlight card-bottom">Order {dishName} here!</p>
+            <p className="card-highlight">Order {dishName} here!</p>
         </div>
     )
 }
