@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import 'src/styles/reservations.css'
 
-const TableReservations = ({availableTimes, updateTimes}) => {
+const TableReservations = ({ availableTimes, updateTimes, confirmForm }) => {
     const today = new Date().toISOString().split('T')[0]
     const [date, setDate] = useState(today);
     const onDateChange = (event) => {
@@ -17,6 +17,16 @@ const TableReservations = ({availableTimes, updateTimes}) => {
 
     const [occasion, setOccasion] = useState("Birthday");
     const onOccasionChange = (event) => setOccasion(event.target.value);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        confirmForm({
+            date: date,
+            time: time,
+            numGuests: numGuests,
+            occasion: occasion
+        });
+    };
 
 
     return (
@@ -54,7 +64,9 @@ const TableReservations = ({availableTimes, updateTimes}) => {
                         <option>Anniversary</option>
                     </select>
                 </div>
-                <input type="submit" value="Make Your reservation" />
+                <input type="submit" value="Make Your reservation"
+                    onClick={handleSubmit}
+                />
             </form>
         </div>
     )

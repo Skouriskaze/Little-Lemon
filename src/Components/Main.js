@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import TableReservations from "./TableReservations";
 import HomePage from "./HomePage";
 import OrderOnline from "./OrderOnline";
 import { useReducer } from "react";
-import {fetchAPI} from 'src/scripts/api.js'
+import {fetchAPI, submitAPI} from 'src/scripts/api.js'
+import BookingConfirmation from "./BookingConfirmation";
 
 const Main = () => {
     const reduceTimes = (state, {date}) => {
@@ -18,6 +19,13 @@ const Main = () => {
         reduceTimes,
         initializeTimes());
 
+    const navigate = useNavigate();
+    const submitForm = (formdata) => {
+        if (submitAPI(formdata)) {
+            navigate('/booking-confirmation');
+        }
+    }
+
     return (
         <main>
             <Routes>
@@ -25,9 +33,14 @@ const Main = () => {
                 <Route path="/reservations"
                     element={<TableReservations
                         availableTimes={availableTimes} 
-                        updateTimes={dispatchAvailableTimes}/>}
+                        updateTimes={dispatchAvailableTimes}
+                        confirmForm={submitForm}
+                    />}
                 />
                 <Route path="/orderonline" element={<OrderOnline />} />
+                <Route path="/booking-confirmation"
+                    element={<BookingConfirmation />}
+                />
             </Routes>
         </main>
     )

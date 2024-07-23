@@ -1,14 +1,24 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
-import TableReservations from '@components/TableReservations';
+import TableReservations from 'src/components//TableReservations';
 import { MemoryRouter } from 'react-router-dom';
-import Main from './components/Main';
+import Main from 'src/components/Main';
+import { fetchAPI } from 'src/scripts/api.js'
 
+jest.mock('src/scripts/api.js', () => ({
+  fetchAPI: jest.fn()
+}));
 // test('renders learn react link', () => {
 //   render(<App />);
 //   const linkElement = screen.getByText(/learn react/i);
 //   expect(linkElement).toBeInTheDocument();
 // });
+
+test('manual', () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
+  console.log(fetchAPI())
+});
 
 test('Render TableReservations Heading', () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00"]
@@ -18,7 +28,8 @@ test('Render TableReservations Heading', () => {
 });
 
 test('Initial available times correct', () => {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00"]
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
   render(
     <MemoryRouter initialEntries={['/reservations']}>
       <Main />
@@ -33,7 +44,8 @@ test('Initial available times correct', () => {
 });
 
 test('Update times correct', () => {
-  const updatedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00"]
+  const intitialTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => intitialTimes);
   render(
     <MemoryRouter initialEntries={['/reservations']}>
       <Main />
@@ -41,6 +53,8 @@ test('Update times correct', () => {
   );
 
   // Change date and update times.
+  const updatedTimes = ["17:00", "18:00", "19:00", "20:30"];
+  fetchAPI.mockImplementation(() => updatedTimes);
   const selector = screen.getByLabelText('Choose date');
   fireEvent.change(selector, {target: {value: "7-22-2024"}});
 
