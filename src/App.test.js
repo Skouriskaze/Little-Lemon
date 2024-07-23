@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
-import TableReservations from './components/TableReservations';
+import TableReservations from '@components/TableReservations';
 import { MemoryRouter } from 'react-router-dom';
 import Main from './components/Main';
 

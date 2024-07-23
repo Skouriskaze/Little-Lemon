@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import '../styles/reservations.css'
+import 'src/styles/reservations.css'
 
 const TableReservations = ({availableTimes, updateTimes}) => {
-    const [date, setDate] = useState("");
+    const today = new Date().toISOString().split('T')[0]
+    const [date, setDate] = useState(today);
     const onDateChange = (event) => {
         setDate(event.target.value);
-        updateTimes();
+        updateTimes({type: 'update', date: event.target.value});
     };
 
     const [time, setTime] = useState("");
@@ -17,6 +18,7 @@ const TableReservations = ({availableTimes, updateTimes}) => {
     const [occasion, setOccasion] = useState("Birthday");
     const onOccasionChange = (event) => setOccasion(event.target.value);
 
+
     return (
         <div className="form-container primary-section-odd">
             <h1>
@@ -25,11 +27,12 @@ const TableReservations = ({availableTimes, updateTimes}) => {
             <form className='table-form'>
                 <div>
                     <label htmlFor="res-date">Choose date</label>
-                    <input type="date" id="res-date" onChange={onDateChange} />
+                    <input type="date" id="res-date" onChange={onDateChange}
+                        value={date}/>
                 </div>
                 <div>
                     <label htmlFor="res-time">Choose time</label>
-                    <select id="res-time" onChange={onTimeChange}>
+                    <select id="res-time" value={time} onChange={onTimeChange}>
                         {availableTimes.map((time) => (
                             <option key={time}>{time}</option>)
                         )}
@@ -38,12 +41,15 @@ const TableReservations = ({availableTimes, updateTimes}) => {
                 <div>
                     <label htmlFor="guests">Number of guests</label>
                     <input type="number"
+                        value={numGuests}
                         placeholder="1" min="1" max="10"
                         id="guests" onChange={onGuestChange} />
                 </div>
                 <div>
                     <label htmlFor="occasion">Occasion</label>
-                    <select id="occasion" onChange={onOccasionChange}>
+                    <select id="occasion" 
+                        value={occasion}
+                        onChange={onOccasionChange}>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                     </select>

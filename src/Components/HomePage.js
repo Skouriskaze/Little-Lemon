@@ -1,7 +1,7 @@
-import About from "./About";
-import Hero from "./Hero";
-import Highlights from "./Highlights";
-import Testimonials from "./Testimonials";
+import About from "src/components/About";
+import Hero from "src/components/Hero";
+import Highlights from "src/components/Highlights";
+import Testimonials from "src/components/Testimonials";
 
 const HomePage = () => {
     return (

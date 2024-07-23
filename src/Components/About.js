@@ -1,4 +1,4 @@
-import '../styles/about.css'
+import 'src/styles/about.css'
 
 const About = () => {
     return (

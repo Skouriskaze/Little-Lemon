@@ -3,13 +3,16 @@ import TableReservations from "./TableReservations";
 import HomePage from "./HomePage";
 import OrderOnline from "./OrderOnline";
 import { useReducer } from "react";
+import {fetchAPI} from 'src/scripts/api.js'
 
 const Main = () => {
-    const reduceTimes = (state, action) => {
-        return state;
+    const reduceTimes = (state, {date}) => {
+        const input_date = new Date(Date.parse(date));
+        return fetchAPI(input_date);
     }
     const initializeTimes = () => {
-        return ["17:00", "18:00", "19:00", "20:00", "21:00"];
+        const input_date = new Date();
+        return fetchAPI(input_date);
     }
     const [availableTimes, dispatchAvailableTimes] = useReducer(
         reduceTimes,
