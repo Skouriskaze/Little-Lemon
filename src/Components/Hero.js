@@ -11,7 +11,7 @@ const Hero = () => {
                     <h2>Chicago</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper orci eu dapibus pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim vel odio vitae molestie. Fusce et tempor magna, vel scelerisque nisl. Integer et lacus rhoncus, fringilla lectus id, dictum odio.</p>
                     <Link to="/reservations">
-                        <button id='reserve-table-button'>
+                        <button id='reserve-table-button' aria-label='On Click'>
                             Reserve a Table
                         </button>
                     </Link>

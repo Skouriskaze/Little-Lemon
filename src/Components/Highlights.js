@@ -12,7 +12,7 @@ const Highlights = () => {
                     Specials
                 </h1>
                 <a href="https://doordash.com" target='_blank' rel="noreferrer">
-                    <button id='order-online-button'>
+                    <button id='order-online-button' aria-label='On Click'>
                         Order Online
                     </button>
                 </a>
