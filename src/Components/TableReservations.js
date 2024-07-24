@@ -18,14 +18,21 @@ const TableReservations = ({ availableTimes, updateTimes, confirmForm }) => {
     const [occasion, setOccasion] = useState("Birthday");
     const onOccasionChange = (event) => setOccasion(event.target.value);
 
+    const [name, setName] = useState("");
+    const onNameChange = (event) => setName(event.target.value);
+    const [isNameBlurred, setIsNameBlurred] = useState(false);
+    let isValidName = name.includes(" ");
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        confirmForm({
-            date: date,
-            time: time,
-            numGuests: numGuests,
-            occasion: occasion
-        });
+        if (isValidName) {
+            confirmForm({
+                date: date,
+                time: time,
+                numGuests: numGuests,
+                occasion: occasion
+            });
+        }
     };
 
 
@@ -34,10 +41,24 @@ const TableReservations = ({ availableTimes, updateTimes, confirmForm }) => {
             <h1>
                 Book a Table
             </h1>
-            <form className='table-form'>
+            <form className='table-form' onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Name:* </label>
+                    <input type="text" id='name' value={name}
+                        onChange={onNameChange}
+                        onBlur={() => setIsNameBlurred(true)}
+                        required />
+                    {(!isValidName && isNameBlurred) && (
+                        <p style={{color: 'red'}}>
+                            Please include first and last name.
+                        </p>
+                    )}
+                </div>
                 <div>
                     <label htmlFor="res-date">Choose date</label>
-                    <input type="date" id="res-date" onChange={onDateChange}
+                    <input type="date" id="res-date"
+                        onChange={onDateChange}
+                        min={today}
                         value={date}/>
                 </div>
                 <div>
@@ -64,9 +85,7 @@ const TableReservations = ({ availableTimes, updateTimes, confirmForm }) => {
                         <option>Anniversary</option>
                     </select>
                 </div>
-                <input type="submit" value="Make Your reservation"
-                    onClick={handleSubmit}
-                />
+                <input type="submit" value="Make Your reservation" />
             </form>
         </div>
     )

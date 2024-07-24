@@ -3,22 +3,18 @@ import App from './App';
 import TableReservations from 'src/components//TableReservations';
 import { MemoryRouter } from 'react-router-dom';
 import Main from 'src/components/Main';
-import { fetchAPI } from 'src/scripts/api.js'
+import { fetchAPI, submitAPI } from 'src/scripts/api.js'
 
 jest.mock('src/scripts/api.js', () => ({
-  fetchAPI: jest.fn()
+  fetchAPI: jest.fn(),
+  submitAPI: jest.fn()
 }));
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
 
-test('manual', () => {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
-  fetchAPI.mockImplementation(() => availableTimes);
-  console.log(fetchAPI())
-});
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
 
 test('Render TableReservations Heading', () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00"]
@@ -63,4 +59,65 @@ test('Update times correct', () => {
     const labelElement = screen.getByRole("option", {name: time});
     expect(labelElement).toBeInTheDocument();
   }
+});
+
+test('Missing name invalid form', () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
+  render(
+    <MemoryRouter initialEntries={['/reservations']}>
+      <Main />
+    </MemoryRouter>
+  );
+
+  const selector = screen.getByLabelText(/Name:/);
+  fireEvent.change(selector, { target: { value: "" } });
+  expect(selector).toBeInvalid();
+});
+
+test('Present name valid form', () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
+  render(
+    <MemoryRouter initialEntries={['/reservations']}>
+      <Main />
+    </MemoryRouter>
+  );
+
+  const selector = screen.getByLabelText(/Name:/);
+  fireEvent.change(selector, { target: { value: "First Last" } });
+  expect(selector).toBeValid();
+});
+
+test('Single name invalid form', () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
+  render(
+    <MemoryRouter initialEntries={['/reservations']}>
+      <Main />
+    </MemoryRouter>
+  );
+
+  const selector = screen.getByLabelText(/Name:/);
+  fireEvent.change(selector, { target: { value: "Name" } });
+  fireEvent.click(screen.getByText(/Make Your reservation/));
+  const confirmation = screen.queryByText("Booking Confirmed");
+  expect(confirmation).not.toBeInTheDocument();
+});
+
+test('Full name success', () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:30"];
+  fetchAPI.mockImplementation(() => availableTimes);
+  submitAPI.mockImplementation(() => true);
+  render(
+    <MemoryRouter initialEntries={['/reservations']}>
+      <Main />
+    </MemoryRouter>
+  );
+
+  const nameSelect = screen.getByLabelText(/Name:/);
+  fireEvent.change(nameSelect, { target: { value: "First Last" } });
+  fireEvent.click(screen.getByText(/Make Your reservation/));
+
+  expect(mockedUsedNavigate).toHaveBeenCalled();
 });

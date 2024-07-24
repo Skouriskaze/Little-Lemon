@@ -6,14 +6,16 @@ import Bruchetta from  '../assets/dishes/bruchetta.svg'
 
 const Highlights = () => {
     return (
-        <div className='highlights-container primary-section-even'>
+        <div className='highlights-container primary-section-even' id='highlights'>
             <div className="highlights-row horizontal-splitter">
                 <h1>
                     Specials
                 </h1>
-                <button id='order-online-button'>
-                    Order Online
-                </button>
+                <a href="https://doordash.com" target='_blank' rel="noreferrer">
+                    <button id='order-online-button'>
+                        Order Online
+                    </button>
+                </a>
             </div>
             <div className="card-container">
                 <Dish image={GreekSalad} dishName="Greek Salad" />

@@ -14,9 +14,13 @@ const Nav = () => {
                 </li>
                 <li><Link to="/">Home</Link></li>
                 {/* <li><a href="#menu">Menu</a></li> */}
-                <li><Link to="/orderonline">Order Online</Link></li>
+                <li><a href="https://doordash.com" target='_blank'
+                    rel="noreferrer">
+                        Order Online
+                </a></li>
+                {/* <li><Link to="/orderonline">Order Online</Link></li> */}
                 <li><Link to="/reservations">Reservations</Link></li>
-                <li><a href="#login">Login</a></li>
+                {/* <li><a href="#login">Login</a></li> */}
             </ul>
         </nav>
     )

@@ -1,4 +1,4 @@
-const Rating = ( {starCount} ) => {
+const Rating = ({ starCount, comments }) => {
     const maxStars = 5;
     const filledStars = Array(starCount).fill(0).map(
         (value, idx) => <span className="fa fa-star checked" key={idx}></span>
@@ -10,7 +10,7 @@ const Rating = ( {starCount} ) => {
     return (
         <div className="rating">
             <div>Name</div>
-            <div>
+            <div aria-label={`${starCount} stars of ${maxStars}`}>
                 {filledStars}
                 {emptyStars}
                 <span className="star-count">
@@ -18,7 +18,7 @@ const Rating = ( {starCount} ) => {
                 </span>
             </div> 
             <div>
-                Comments Here. I have some big concerns.
+                {comments}
             </div>
         </div>
     );

@@ -6,9 +6,9 @@
     background: #333333;
     text-align: center;
     border-radius: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 16px;
     color: #EDEFEE;
+    height: 80%;
 }
 
 .rating > div {
