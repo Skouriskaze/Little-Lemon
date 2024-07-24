@@ -1,4 +1,4 @@
-const Rating = ({ starCount, comments }) => {
+const Rating = ({ name, starCount, comments }) => {
     const maxStars = 5;
     const filledStars = Array(starCount).fill(0).map(
         (value, idx) => <span className="fa fa-star checked" key={idx}></span>
@@ -9,7 +9,7 @@ const Rating = ({ starCount, comments }) => {
 
     return (
         <div className="rating">
-            <div>Name</div>
+            <div>{name}</div>
             <div aria-label={`${starCount} stars of ${maxStars}`}>
                 {filledStars}
                 {emptyStars}
